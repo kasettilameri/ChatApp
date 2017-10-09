@@ -28,10 +28,10 @@ public class CommandInterpreter implements Observer, Runnable{
         outputStream = (System.out);*/
         Scanner in = new Scanner(inputStream);
         String lineQuit = "$quit";
-        boolean stop;
+        boolean stop = false;
+        outputStream.println("Enter command: ");
         do
-        {
-            outputStream.println("Enter command: ");
+        { if(!in.hasNext()) continue;
             String command = in.nextLine();
             stop = command.equals(lineQuit);
             try {
@@ -62,6 +62,7 @@ public class CommandInterpreter implements Observer, Runnable{
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            outputStream.println("Enter command: ");
         } while(!stop);
         ChatHistory.getInstance().deleteObserver(this);
         outputStream.println("Bai!");

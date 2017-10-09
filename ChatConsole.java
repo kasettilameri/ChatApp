@@ -5,6 +5,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class ChatConsole implements Runnable, Observer {
+    public ChatConsole() {
+        ChatHistory.getInstance().addObserver(this);
+    }
     @Override
     public void update(Observable observable, Object arg) {
         try {

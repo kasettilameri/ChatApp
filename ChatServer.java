@@ -15,11 +15,11 @@ public class ChatServer {
                 Socket s = ss.accept();
                 System.out.println("Accepted new connection");
                 CommandInterpreter ci = new CommandInterpreter(s.getInputStream(), new PrintStream(s.getOutputStream(), true));
-                //ChatConsole cc = new ChatConsole();
+                ChatConsole cc = new ChatConsole();
                 Thread t = new Thread(ci);
-                //Thread t2 = new Thread(cc);
+                Thread t2 = new Thread(cc);
                 t.start();
-                //t2.start();
+                t2.start();
                 //ci.run();
                 //s.close();
             }
